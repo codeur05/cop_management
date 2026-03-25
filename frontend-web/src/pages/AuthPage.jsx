@@ -36,7 +36,9 @@ const AuthPage = () => {
         navigate(`/verify-otp?email=${encodeURIComponent(data.email)}`);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Une erreur est survenue');
+      console.error('Auth error:', err);
+      const msg = err.response?.data?.message || err.message || JSON.stringify(err);
+      setError(msg);
     } finally {
       setLoading(false);
     }
