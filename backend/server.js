@@ -27,12 +27,8 @@ const app = express();
 // Body parser
 app.use(express.json());
 
-// Enable CORS explicitly
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
-}));
+// Enable CORS
+app.use(cors());
 
 // Route files
 const authRoutes = require('./routes/authRoutes');
