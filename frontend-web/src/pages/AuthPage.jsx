@@ -15,8 +15,16 @@ const AuthPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
+  const [health, setHealth] = useState('Checking...');
   const { login, register } = useAuth();
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    fetch('https://cop-backend-29pm.onrender.com/')
+      .then(r => r.text())
+      .then(() => setHealth('Connected ✅'))
+      .catch(e => setHealth(`Disconnected ❌ (${e.message})`));
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -155,7 +163,8 @@ const AuthPage = () => {
           </p>
           
           <div style={{ marginTop: '20px', fontSize: '10px', color: '#666', textAlign: 'center', opacity: 0.5 }}>
-            API: {import.meta.env.VITE_API_URL || 'Local (localhost:8000)'}
+            API: https://cop-backend-29pm.onrender.com/api<br/>
+            Status: {health}
           </div>
         </div>
       </div>

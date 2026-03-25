@@ -24,6 +24,9 @@ connectDB().then(async () => {
 
 const app = express();
 
+// Trust proxy for Render/Cloudflare
+app.set('trust proxy', 1);
+
 // Body parser
 app.use(express.json());
 
@@ -35,6 +38,9 @@ app.use((req, res, next) => {
 
 // Enable CORS
 app.use(cors());
+
+// Handle OPTIONS preflight manually just in case
+app.options('*', cors());
 
 // Route files
 const authRoutes = require('./routes/authRoutes');
