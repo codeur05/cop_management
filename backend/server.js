@@ -64,6 +64,35 @@ app.get('/', (req, res) => {
   res.send('Digital Cooperative Management API is running...');
 });
 
+// TEMPORARY: Reset Admin Route
+app.get('/api/auth/force-reset-admin', async (req, res) => {
+  try {
+    const bcrypt = require('bcryptjs');
+    const User = require('./models/User');
+    const email = 'efraimkantagba16@gmail.com';
+    const password = 'Bonjour@2005';
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const result = await User.findOneAndUpdate(
+      { email: email },
+      { 
+        $set: { 
+          password: hashedPassword,
+          isVerified: true,
+          role: 'Admin',
+          firstName: 'Admin',
+          lastName: 'Cooperative'
+        } 
+      },
+      { upsert: true, new: true, runValidators: false }
+    );
+
+    res.send(`SUCCESS! Admin account ${email} is now ready! Password: ${password}`);
+  } catch (error) {
+    res.status(500).send(`Error: ${error.message}`);
+  }
+});
+
 // Error handling middleware (Bonus)
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
