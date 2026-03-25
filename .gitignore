@@ -1,0 +1,11 @@
+node_modules/
+.env
+mongo_data/
+mobile/.dart_tool/
+mobile/build/
+frontend-web/node_modules/
+frontend-web/dist/
+backend/node_modules/
+backend/error.log
+backend/test_auth.js
+backend/reset_pwd.js

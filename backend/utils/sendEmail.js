@@ -1,0 +1,30 @@
+const nodemailer = require('nodemailer');
+
+const sendEmail = async (options) => {
+  if (!process.env.EMAIL_USER || process.env.EMAIL_USER.includes('votre-email')) {
+    console.warn('Email credentials not configured. Skipping email sending.');
+    throw new Error('Email credentials not configured');
+  }
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  const message = {
+    from: `${process.env.FROM_NAME || 'Cooperative Management'} <${process.env.EMAIL_USER}>`,
+    to: options.email,
+    subject: options.subject,
+    text: options.message,
+    html: options.html,
+  };
+
+  const info = await transporter.sendMail(message);
+
+  console.log('Message sent: %s', info.messageId);
+};
+
+module.exports = sendEmail;

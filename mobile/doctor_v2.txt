@@ -1,0 +1,38 @@
+﻿[ΓêÜ] Flutter (Channel stable, 3.38.6, on Microsoft Windows [version 10.0.26200.8037], locale fr-FR) [734ms]
+    ΓÇó Flutter version 3.38.6 on channel stable at C:\src\flutter
+    ΓÇó Upstream repository https://github.com/flutter/flutter.git
+    ΓÇó Framework revision 8b87286849 (2 months ago), 2026-01-08 10:49:17 -0800
+    ΓÇó Engine revision 78fc3012e4
+    ΓÇó Dart version 3.10.7
+    ΓÇó DevTools version 2.51.1
+    ΓÇó Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging
+
+[ΓêÜ] Windows Version (11 Professionnel 64-bit, 25H2, 2009) [2,6s]
+
+[!] Android toolchain - develop for Android devices (Android SDK version 36.1.0) [889ms]
+    ΓÇó Android SDK at C:\Users\user\AppData\Local\Android\sdk
+    ΓÇó Emulator version 36.4.10.0 (build_id 15004761) (CL:N/A)
+    ΓÇó Platform android-36-ext18, build-tools 36.1.0
+    ΓÇó Java binary at: C:/PROGRA~1/Android/ANDROI~1/jbr\bin\java
+      This JDK is specified in your Flutter configuration.
+      To change the current JDK, run: `flutter config --jdk-dir="path/to/jdk"`.
+    X Cannot execute C:/PROGRA~1/Android/ANDROI~1/jbr\bin\java to determine the version
+
+[ΓêÜ] Chrome - develop for the web [255ms]
+    ΓÇó Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[ΓêÜ] Visual Studio - develop Windows apps (Visual Studio Community 2026 18.1.1) [253ms]
+    ΓÇó Visual Studio at C:\Program Files\Microsoft Visual Studio\18\Community
+    ΓÇó Visual Studio Community 2026 version 18.1.11312.151
+    ΓÇó Windows 10 SDK version 10.0.26100.0
+
+[ΓêÜ] Connected device (4 available) [813ms]
+    ΓÇó sdk gphone16k x86 64 (mobile) ΓÇó emulator-5554 ΓÇó android-x64    ΓÇó Android 16 (API 36) (emulator)
+    ΓÇó Windows (desktop)             ΓÇó windows       ΓÇó windows-x64    ΓÇó Microsoft Windows [version 10.0.26200.8037]
+    ΓÇó Chrome (web)                  ΓÇó chrome        ΓÇó web-javascript ΓÇó Google Chrome 146.0.7680.80
+    ΓÇó Edge (web)                    ΓÇó edge          ΓÇó web-javascript ΓÇó Microsoft Edge 146.0.3856.62
+
+[ΓêÜ] Network resources [1ΓÇ»519ms]
+    ΓÇó All expected network resources are available.
+
+! Doctor found issues in 1 category.
