@@ -47,8 +47,16 @@ const AuthPage = () => {
     
     try {
       if (isLogin) {
-        await login(formData.email, formData.password);
-        navigate('/');
+        try {
+          await login(formData.email, formData.password);
+          navigate('/');
+        } catch (err) {
+          if (err.response?.data?.message === 'Veuillez vérifier votre email') {
+            navigate(`/verify-otp?email=${encodeURIComponent(formData.email)}`);
+            return;
+          }
+          throw err;
+        }
       } else {
         const data = await register(formData);
         navigate(`/verify-otp?email=${encodeURIComponent(data.email)}`);
