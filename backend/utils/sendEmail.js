@@ -9,7 +9,7 @@ const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
-    secure: true, // true for 465, false for 587
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -17,7 +17,10 @@ const sendEmail = async (options) => {
     tls: {
       rejectUnauthorized: false
     },
-    family: 4 // Force IPv4 to avoid ENETUNREACH on IPv6
+    // Force IPv4 because Render sometimes has issues with IPv6 resolution to Google
+    lookup: (hostname, options, callback) => {
+      require('dns').lookup(hostname, { family: 4 }, callback);
+    }
   });
 
   const message = {
