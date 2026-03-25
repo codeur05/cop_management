@@ -36,8 +36,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// Enable CORS
-app.use(cors());
+// Enable CORS with explicit settings
+app.use(cors({
+  origin: true, // Reflect the request origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+  credentials: true
+}));
 
 // Route files
 const authRoutes = require('./routes/authRoutes');

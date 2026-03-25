@@ -19,11 +19,21 @@ const AuthPage = () => {
   const { login, register } = useAuth();
   const navigate = useNavigate();
 
+  const checkConnection = async () => {
+    setHealth('Checking...');
+    try {
+      // Test direct API ping
+      const res = await fetch('https://cop-backend-29pm.onrender.com/api/auth/register', { 
+        method: 'OPTIONS' 
+      });
+      setHealth('Connected ✅');
+    } catch (e) {
+      setHealth(`Disconnected ❌ (${e.message})`);
+    }
+  };
+
   React.useEffect(() => {
-    fetch('https://cop-backend-29pm.onrender.com/')
-      .then(r => r.text())
-      .then(() => setHealth('Connected ✅'))
-      .catch(e => setHealth(`Disconnected ❌ (${e.message})`));
+    checkConnection();
   }, []);
 
   const handleChange = (e) => {
@@ -164,7 +174,7 @@ const AuthPage = () => {
           
           <div style={{ marginTop: '20px', fontSize: '10px', color: '#666', textAlign: 'center', opacity: 0.5 }}>
             API: https://cop-backend-29pm.onrender.com/api<br/>
-            Status: {health}
+            Status: {health} <span onClick={checkConnection} style={{ textDecoration: 'underline', cursor: 'pointer', marginLeft: '5px' }}>(Réessayer)</span>
           </div>
         </div>
       </div>
