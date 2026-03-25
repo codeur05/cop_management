@@ -16,7 +16,8 @@ const sendEmail = async (options) => {
     },
     tls: {
       rejectUnauthorized: false // Helps in some cloud environments
-    }
+    },
+    family: 4 // Force IPv4 to avoid ENETUNREACH on IPv6
   });
 
   const message = {
