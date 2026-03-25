@@ -15,26 +15,8 @@ const AuthPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const [health, setHealth] = useState('Checking...');
   const { login, register } = useAuth();
   const navigate = useNavigate();
-
-  const checkConnection = async () => {
-    setHealth('Checking...');
-    try {
-      // Test direct API ping
-      const res = await fetch('https://cop-backend-29pm.onrender.com/api/auth/register', { 
-        method: 'OPTIONS' 
-      });
-      setHealth('Connected ✅');
-    } catch (e) {
-      setHealth(`Disconnected ❌ (${e.message})`);
-    }
-  };
-
-  React.useEffect(() => {
-    checkConnection();
-  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -180,10 +162,6 @@ const AuthPage = () => {
             </span>
           </p>
           
-          <div style={{ marginTop: '20px', fontSize: '10px', color: '#666', textAlign: 'center', opacity: 0.5 }}>
-            API: https://cop-backend-29pm.onrender.com/api<br/>
-            Status: {health} <span onClick={checkConnection} style={{ textDecoration: 'underline', cursor: 'pointer', marginLeft: '5px' }}>(Réessayer)</span>
-          </div>
         </div>
       </div>
     </div>

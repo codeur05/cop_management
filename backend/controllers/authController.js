@@ -47,7 +47,6 @@ const registerUser = async (req, res, next) => {
       console.log(`Nouvel utilisateur créé : ${user.email}. Tentative d'envoi d'OTP...`);
       // Send Email
       const message = `Votre code de vérification est : ${otp}. Il expire dans 10 minutes.`;
-      console.log('DEBUG OTP:', message);
       try {
         await sendEmail({
           email: user.email,
@@ -185,7 +184,6 @@ const resendOTP = async (req, res, next) => {
     );
 
     const message = `Votre nouveau code de vérification est : ${otp}. Il expire dans 10 minutes.`;
-    console.log('DEBUG OTP (RESEND):', message);
     try {
       await sendEmail({
         email: user.email,
