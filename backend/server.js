@@ -39,9 +39,6 @@ app.use((req, res, next) => {
 // Enable CORS
 app.use(cors());
 
-// Handle OPTIONS preflight manually just in case
-app.options('*', cors());
-
 // Route files
 const authRoutes = require('./routes/authRoutes');
 const memberRoutes = require('./routes/memberRoutes');
