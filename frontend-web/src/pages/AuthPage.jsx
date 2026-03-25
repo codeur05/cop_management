@@ -151,6 +151,10 @@ const AuthPage = () => {
               {isLogin ? " S'inscrire" : " Se connecter"}
             </span>
           </p>
+          
+          <div style={{ marginTop: '20px', fontSize: '10px', color: '#666', textAlign: 'center', opacity: 0.5 }}>
+            API: {import.meta.env.VITE_API_URL || 'Local (localhost:8000)'}
+          </div>
         </div>
       </div>
     </div>
